@@ -24,6 +24,5 @@ export default config({
         name: "Proyecto Grand Order",
         mark
     },
-  },
-  locale: "es-ES"
+  }
 });

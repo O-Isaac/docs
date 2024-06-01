@@ -32,11 +32,6 @@ export default defineConfig({
       autogenerate: {
         directory: "instalacion"
       }
-    }, {
-      label: "Reference",
-      autogenerate: {
-        directory: "reference"
-      }
     }]
   }), tailwind({
     applyBaseStyles: false
