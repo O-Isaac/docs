@@ -1,11 +1,10 @@
-<section class="h-screen gradient-mask-b-90">
+<section class="h-screen">
     <figure id="background" class="max-h-svh h-svh bg-center bg-hero bg-cover relative overflow-hidden">
+        <div class="hidden lg:block m-4 mt-9 bg-zinc-50 text-zinc-700 shadow absolute p-2 px-3 rounded-2xl dark:bg-zinc-800 dark:text-zinc-400">
+            Disfruta de la historia de Fate/Grand Order en español
+        </div>
         <img src="/assets/chr.webp" alt="Servant" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full pt-12 object-cover" />
     </figure>
-</section>
-
-<section>
-    <slot />
 </section>
 
 <style is:inline>
@@ -20,6 +19,10 @@
    
     main {
         padding-bottom: 0;
+    }
+
+    .sl-markdown-content {
+        display: none;
     }
 </style>
 

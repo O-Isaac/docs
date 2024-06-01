@@ -2,6 +2,9 @@
 import { paths } from "@/settings"
 import Link from '@/components/frame/link.astro';
 
+// @ts-ignore
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+import Menu from "@/icons/menu.astro";
 
 const { hasSidebar, labels } = Astro.props;
 ---
@@ -11,6 +14,11 @@ const { hasSidebar, labels } = Astro.props;
         <figure class="mb-4">
             <img fetchpriority="high" class="block mx-auto dark:invert" src="/assets/bg-logo.svg" alt="Logo" width="50" height="50">
         </figure>
+
+		<div class="px-4 *:mx-auto">
+			<ThemeSelect {...Astro.props} />
+		</div>
+
         <nav class="*:block *:p-5 text-center *:no-underline">
 			{paths.map(({ Icon, href, title }) => {
 				return (<Link href={href}><Icon slot="icon" /> {title}</Link>)
@@ -20,7 +28,7 @@ const { hasSidebar, labels } = Astro.props;
 
 	{
 		hasSidebar && (
-			<nav class="p-4 px-6 w-80 lg:inline-block border-r pt-14 dark:bg-zinc-900 dark:border-zinc-800" aria-label={labels['sidebarNav.accessibleLabel']}>
+			<nav id="sidebar" class="p-4 px-6 w-80 hidden relative lg:inline-block border-r pt-14 dark:bg-zinc-900 dark:border-zinc-800" aria-label={labels['sidebarNav.accessibleLabel']}>
 				<slot name="sidebar" />
 			</nav>
 		)
@@ -29,17 +37,33 @@ const { hasSidebar, labels } = Astro.props;
 	<div class="inline-block flex-1 overflow-y-auto relative">
         <slot />
     </div>
+
+	{
+		hasSidebar && (
+			<button id="btnSidebar" class="block lg:hidden fixed bottom-4 right-4 dark:hover:bg-zinc-300 dark:bg-zinc-100 pt-2 px-2 rounded-full bg-zinc-900 hover:bg-zinc-700 hover:cursor-pointer">
+				<Menu class="text-zinc-100 dark:text-zinc-900" />	
+			</button>
+		)
+	}
 </div>
 
 <style is:inline>
 	mobile-starlight-toc > nav {
 		top: 0;
 		border-top: 0;
-		inset-inline-start: 104.5px;
-		margin-bottom: 10px;
+		left: 0;
 	}
-
 	.mobile-preferences {
 		border: none;
 	}
 </style>
+
+
+<script>
+	const btn = document.querySelector("#btnSidebar") as HTMLButtonElement
+		const sidebar = document.querySelector("#sidebar") as HTMLDivElement
+
+		if (btn && sidebar) {
+			btn.addEventListener("click", () => sidebar.classList.toggle("hidden"))
+		}
+</script>
