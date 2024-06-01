@@ -20,7 +20,7 @@ export default defineConfig({
     },
     components: {
       PageFrame: "@/layouts/frame.astro",
-      Hero: "@/components/hero.astro"
+      Hero: "@/components/hero.astro",
     },
     sidebar: [{
       label: "Rayshift",
