@@ -1,0 +1,9 @@
+---
+interface Props {
+    href: string
+}
+---
+<a class="text-gray-500 dark:hover:text-gray-400 hover:text-gray-900 transition-colors *:block *:mx-auto" href={Astro.props.href}>
+    <slot name="icon" />
+    <slot />
+</a>

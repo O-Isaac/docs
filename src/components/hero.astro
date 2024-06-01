@@ -1,0 +1,37 @@
+<section class="h-screen gradient-mask-b-90">
+    <figure id="background" class="max-h-svh h-svh bg-center bg-hero bg-cover relative overflow-hidden">
+        <img src="/assets/chr.webp" alt="Servant" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full pt-12 object-cover" />
+    </figure>
+</section>
+
+<section>
+    <slot />
+</section>
+
+<style is:inline>
+    .sl-container {
+        margin-inline: 0;
+        max-width: 100%
+    }
+
+    .content-panel {
+        padding: 0;
+    }
+   
+    main {
+        padding-bottom: 0;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        const parallaxElement = document.querySelector('#background') as HTMLElement;
+        const scrolled = window.scrollY;
+        const limit = 900; // ajuste el límite según tus necesidades
+        const parallaxSpeed = 0.4; // ajuste la velocidad según tus necesidades
+
+        if (parallaxElement && scrolled <= limit) {
+            parallaxElement.style.backgroundPosition = `center ${scrolled * parallaxSpeed}px`;
+        }
+    });
+</script>
