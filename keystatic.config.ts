@@ -9,11 +9,29 @@ export default config({
     repo: `Proyecto-Grand-Order-Oficial/docs`
   }, 
   collections: {
-    docs: collection({
-      label: 'Documentación',
+    rayshift: collection({
+      label: 'Rayshift',
       slugField: 'title',
       columns: ['title', 'description'],
-      path: 'src/content/docs/**',
+      path: 'src/content/docs/rayshift/**',
+      format: { contentField: 'content' },
+      entryLayout: "content",
+      schema: docs,
+    }),
+    instalacion: collection({
+      label: 'Instalación',
+      slugField: 'title',
+      columns: ['title', 'description'],
+      path: 'src/content/docs/instalacion/**',
+      format: { contentField: 'content' },
+      entryLayout: "content",
+      schema: docs,
+    }),
+    especial: collection({
+      label: 'Paginas especiales',
+      slugField: 'title',
+      columns: ['title', 'description'],
+      path: 'src/content/docs/especial/**',
       format: { contentField: 'content' },
       entryLayout: "content",
       schema: docs,
