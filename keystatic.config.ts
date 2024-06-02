@@ -4,9 +4,8 @@ import { config, collection } from '@keystatic/core';
 
 export default config({
   storage: {
-    kind: "local"
-    // kind: 'github',
-    // repo: `Proyecto-Grand-Order-Oficial/docs`
+    kind: 'github',
+    repo: `O-Isaac/docs`
   }, 
   collections: {
     rayshift: collection({
