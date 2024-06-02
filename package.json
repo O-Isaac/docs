@@ -11,21 +11,29 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/markdoc": "^0.11.0",
+    "@astrojs/mdx": "^3.0.1",
     "@astrojs/react": "^3.4.0",
     "@astrojs/starlight": "^0.23.2",
     "@astrojs/starlight-tailwind": "^2.0.3",
     "@astrojs/tailwind": "^5.1.0",
+    "@egjs/flicking": "^4.11.3",
+    "@egjs/flicking-plugins": "^4.7.1",
     "@keystatic/astro": "^5.0.0",
     "@keystatic/core": "^0.5.18",
+    "@midudev/tailwind-animations": "^0.0.7",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.8.6",
+    "astro-auto-import": "^0.4.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.32.5",
     "tailwind-gradient-mask-image": "^1.2.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
+    "astro-vtbot": "^1.7.22"
   }
 }

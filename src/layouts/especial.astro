@@ -1,0 +1,41 @@
+---
+import type { StarlightDocsEntry } from 'node_modules/@astrojs/starlight/utils/routing';
+
+interface Props {
+    entry: StarlightDocsEntry
+}
+
+const { entry } = Astro.props
+const { Content } = await entry.render()
+---
+
+<div class="inline-block flex-1 overflow-y-auto relative">
+    <article class="pb-8">
+        <header>
+            <figure>
+                <img transition:name="main" class="w-full gradient-mask-b-80 object-cover aspect-[20/9]" src={entry.data.image} alt={`${entry.data.title} banner`} />
+            </figure>
+        </header>
+        <main class="w-screen prose dark:prose-invert max-w-full text-pretty wrapper py-12">
+            <Content />
+        </main>
+    </article>
+</div>
+
+
+<style is:inline>
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr min(95ch, calc(100% - 64px)) 1fr;
+        grid-column-gap: 32px;
+    }
+
+    .wrapper > * {
+        grid-column: 2;
+    }
+
+    .full-bleed {
+        width: 100%;
+        grid-column: 1 / -1;
+    }
+</style>

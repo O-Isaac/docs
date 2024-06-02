@@ -1,12 +1,16 @@
 ---
+import type { Props } from '@astrojs/starlight/props';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+
 import { paths } from "@/settings"
-import Link from '@/components/frame/link.astro';
-
-// @ts-ignore
-import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+import Link from '@/components/core/link.astro';
+import Especial from "@/layouts/especial.astro";
 import Menu from "@/icons/menu.astro";
+import modifyProps from "@/utils/modifyProps"
+import Noticias from './noticias.astro';
 
-const { hasSidebar, labels } = Astro.props;
+const props = modifyProps(Astro.props)
+const { hasSidebar, entry, labels } = props
 ---
 
 <div class="flex min-h-screen overflow-hidden">
@@ -34,9 +38,20 @@ const { hasSidebar, labels } = Astro.props;
 		)
 	}
 
-	<div class="inline-block flex-1 overflow-y-auto relative">
-        <slot />
-    </div>
+
+	{
+		entry.data.template === "especial"
+		? (<Especial entry={entry} />) 
+		: entry.data.template === "news"
+		? (<Noticias entry={entry} />)
+		: (
+			<div class="inline-block flex-1 overflow-y-auto relative">
+				<slot />
+			</div>
+		)
+		
+	}
+		
 
 	{
 		hasSidebar && (

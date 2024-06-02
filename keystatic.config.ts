@@ -1,18 +1,18 @@
-import docs from '@/models/docs';
-
+import { docs } from '@/database/models/core';
 import { mark } from '@/utils/logo';
 import { config, collection } from '@keystatic/core';
 
 export default config({
   storage: {
-    kind: 'github',
-    repo: `Proyecto-Grand-Order-Oficial/docs`
+    kind: "local"
+    // kind: 'github',
+    // repo: `Proyecto-Grand-Order-Oficial/docs`
   }, 
   collections: {
     rayshift: collection({
       label: 'Rayshift',
       slugField: 'title',
-      columns: ['title', 'description'],
+      columns: ['title', 'description'],  
       path: 'src/content/docs/rayshift/**',
       format: { contentField: 'content' },
       entryLayout: "content",
@@ -36,11 +36,23 @@ export default config({
       entryLayout: "content",
       schema: docs,
     }),
+    noticias: collection({
+      label: 'Noticias',
+      slugField: 'title',
+      columns: ['title', 'description'],
+      path: 'src/content/docs/noticias/**',
+      format: { contentField: 'content' },
+      entryLayout: "content",
+      schema: docs,
+    }),
   },
   ui: {
-    brand: {
-        name: "Proyecto Grand Order",
-        mark
-    },
+    brand: { name: "Proyecto Grand Order", mark },
+    navigation: [
+      "instalacion",
+      "rayshift",
+      "especial",
+      "noticias"
+    ]
   }
 });

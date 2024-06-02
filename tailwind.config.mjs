@@ -1,6 +1,8 @@
 import starlightPlugin from '@astrojs/starlight-tailwind';
 import gradientMaskImagePlugin from 'tailwind-gradient-mask-image';
+import typographyPlugin from "@tailwindcss/typography"
 import colors from 'tailwindcss/colors';
+import animations from '@midudev/tailwind-animations'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -15,13 +17,19 @@ export default {
 				sans: ['"Atkinson Hyperlegible"'],
 				mono: ['"IBM Plex Mono"'],
 			},
+			content: {
+				"chr-dark": "url(/assets/chr-dark.webp)"
+			},
 			backgroundImage: {
-				"hero": "url(/assets/hero.webp)"
+				"hero": "url(/assets/hero.webp)",
+				"hero-dark": "url(/assets/hero-dark.webp)",
 			}
 		},
 	},
 	plugins: [
 		starlightPlugin(),
-		gradientMaskImagePlugin
+		gradientMaskImagePlugin,
+		typographyPlugin,
+		animations
 	],
 }

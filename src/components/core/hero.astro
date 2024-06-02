@@ -1,9 +1,11 @@
 <section class="h-screen">
-    <figure id="background" class="max-h-svh h-svh bg-center bg-hero bg-cover relative overflow-hidden">
+    <figure id="background" class="max-h-svh h-svh bg-center dark:bg-hero-dark bg-hero bg-cover relative overflow-hidden">
         <div class="hidden lg:block m-4 mt-9 bg-zinc-50 text-zinc-700 shadow absolute p-2 px-3 rounded-2xl dark:bg-zinc-800 dark:text-zinc-400">
             Disfruta de la historia de Fate/Grand Order en español
         </div>
-        <img src="/assets/chr.webp" alt="Servant" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full pt-12 object-cover" />
+        <a href="/especial/traum">
+            <img transition:name="main" src="/assets/chr.webp" alt="Servant" class="absolute dark:content-chr-dark top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover animate-blurred-fade-in" />
+        </a>
     </figure>
 </section>
 
@@ -22,6 +24,10 @@
     }
 
     .sl-markdown-content {
+        display: none;
+    }
+
+    footer {
         display: none;
     }
 </style>

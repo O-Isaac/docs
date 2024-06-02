@@ -3,10 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@assets/*": ["/src/assets/*"],
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@database/*": ["src/database/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

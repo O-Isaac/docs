@@ -1,0 +1,41 @@
+---
+import "@egjs/flicking/dist/flicking.css"
+import "@egjs/flicking-plugins/dist/flicking-plugins.css";
+import "@egjs/flicking-plugins/dist/arrow.css";
+---
+
+<section class="full-bleed">
+    <div id="carousel" class="flicking-viewport">
+        <div class="flicking-camera *:w-1/2  *:object-cover  *:mx-2">
+          <slot>
+        </div>
+        <span class="flicking-arrow-prev"></span>
+        <span class="flicking-arrow-next"></span>
+    </div>
+</section>
+
+<script>
+    const carousel = document.querySelector("#carousel")
+    
+    import { AutoPlay, Arrow, Fade } from "@egjs/flicking-plugins";
+    import Flicking from "@egjs/flicking";
+
+    function createInstanceFlicking () {
+        if (carousel) {
+            const flicking = new Flicking("#carousel", {
+                align: "center",
+                circular: true,
+                bound: true,
+            });
+    
+            flicking.addPlugins(
+                new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: false }),
+                new Arrow(),
+                new Fade()
+            )
+        }
+    }
+
+    document.addEventListener('astro:after-swap', createInstanceFlicking)
+    createInstanceFlicking()
+</script>
