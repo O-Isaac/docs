@@ -76,9 +76,14 @@ const { hasSidebar, entry, labels } = props
 
 <script>
 	const btn = document.querySelector("#btnSidebar") as HTMLButtonElement
-		const sidebar = document.querySelector("#sidebar") as HTMLDivElement
+	const sidebar = document.querySelector("#sidebar") as HTMLDivElement
 
+	function createSidebarAction () {
 		if (btn && sidebar) {
 			btn.addEventListener("click", () => sidebar.classList.toggle("hidden"))
 		}
+	}
+
+	document.addEventListener("astro:after-swap", createSidebarAction)
+	createSidebarAction()
 </script>
