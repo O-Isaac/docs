@@ -2,6 +2,7 @@ import { docs } from '@/database/models/core';
 import { mark } from '@/utils/logo';
 import { config, collection } from '@keystatic/core';
 
+// Keystatic Config File
 export default config({
   storage: {
     kind: 'github',

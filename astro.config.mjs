@@ -1,46 +1,25 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import tailwind from "@astrojs/tailwind";
-import AutoImport from 'astro-auto-import';
 import react from "@astrojs/react";
 import keystatic from '@keystatic/astro';
 import mdx from '@astrojs/mdx';
-
 import vercel from "@astrojs/vercel/serverless";
+import AutoImport from 'astro-auto-import';
+import starlightConfig from "./starlight.config.ts";
+import importsConfig from "./imports.config.ts";
+
+import metaTags from "astro-meta-tags";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://v2.proyectograndorder.es",
-  devToolbar: {
-    enabled: false
+  redirects: {
+    '/admin': '/keystatic'
   },
   output: "hybrid",
-  integrations: [starlight({
-    title: "Proyecto Grand Order",
-    customCss: ["./src/tailwind.css"],
-    social: {
-      github: "https://github.com/withastro/starlight"
-    },
-    components: {
-      PageFrame: "@/layouts/main.astro",
-      Hero: "@/components/core/hero.astro",
-      Head: "@/components/core/head.astro"
-    },
-    sidebar: [{
-      label: "Rayshift",
-      autogenerate: {
-        directory: "rayshift"
-      }
-    }, {
-      label: "Instalacion",
-      autogenerate: {
-        directory: "instalacion"
-      }
-    }]
-  }), tailwind({
+  integrations: [starlight(starlightConfig), tailwind({
     applyBaseStyles: false
-  }), AutoImport({
-    imports: ['@components/extended/Carousel.astro', '@components/extended/Image.astro']
-  }), react(), keystatic(), mdx()],
+  }), AutoImport(importsConfig), react(), keystatic(), mdx(), metaTags()],
   adapter: vercel()
 });
