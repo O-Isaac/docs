@@ -13,7 +13,7 @@ const props = modifyProps(Astro.props)
 const { hasSidebar, entry, labels } = props
 ---
 
-<div class="flex min-h-screen overflow-hidden">
+<div class="flex min-h-screen">
 	<aside class="inline-block border-r py-8 bg-white dark:bg-zinc-900 dark:border-zinc-800">
         <figure class="mb-4">
             <img fetchpriority="high" class="block mx-auto dark:invert" src="/assets/bg-logo.svg" alt="Logo" width="50" height="50">
@@ -32,7 +32,7 @@ const { hasSidebar, entry, labels } = props
 
 	{
 		hasSidebar && (
-			<nav id="sidebar" class="p-4 px-6 w-80 hidden relative lg:inline-block border-r pt-14 dark:bg-zinc-900 dark:border-zinc-800" aria-label={labels['sidebarNav.accessibleLabel']}>
+			<nav id="sidebar" class="p-4 px-6 w-80 hidden relative lg:inline-block border-r pt-14 dark:bg-zinc-900 dark:border-zinc-800 *:sticky *:top-16" aria-label={labels['sidebarNav.accessibleLabel']}>
 				<slot name="sidebar" />
 			</nav>
 		)
